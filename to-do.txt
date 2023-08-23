@@ -1,0 +1,11 @@
+
+make sep page for comics per char id
+
+whole new sec for lising all comics
+same for
+characs   evens   sories(can be lef)
+
+reac rouer configure
+
+figure ou abou paginaion implemen offse and limi inorder ro lis more dara
+
