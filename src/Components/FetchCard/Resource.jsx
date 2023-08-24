@@ -13,7 +13,7 @@ export default function Resource(props) {
 
             let obj = {
                 id: apidata.data.results[0].id,
-                name: apidata.data.results[0].title,
+                name: apidata.data.results[0].title || apidata.data.results[0].name || apidata.data.results[0].fullName,
                 img: apidata.data.results[0].thumbnail?.path + '.' + apidata.data.results[0].thumbnail?.extension,
                 description:apidata.data.results[0]?.description
             }
@@ -24,14 +24,14 @@ export default function Resource(props) {
 
     return (
         <div>
-            
+            {!resData && <h1>LOADING!!!</h1> }
             {resData && <div>
                 <h4>#{resData.id}</h4>
                 <h4>{resData.name || resData.title || resData.fullName}</h4>
                 <img src={resData.img} alt="" style={{ height: '100px', width: '100px' }} />
                 <p>
                     {
-                        (typeof(resData.description) === 'string')?resData.description.substring(1, 70):"DESCRIPTION"
+                        (typeof(resData.description) === 'string')?resData.description.substring(0, 70):"DESCRIPTION"
                     }
                 </p>
             </div>

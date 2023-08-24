@@ -45,7 +45,7 @@ export default function UniComic(props) {
                         }
                     </div>}
 
-                    <div style={{
+                    {comicData.characters.available > 0 && <div style={{
                         display: 'grid',
                         gridTemplateColumns: '200px 200px 200px 200px 200px'
                     }}>
@@ -54,8 +54,8 @@ export default function UniComic(props) {
                             // eslint-disable-next-line react/jsx-key
                             comicData.characters.items.map(ele => <Resource resourceURI={ele.resourceURI} />)
                         }
-                    </div>
-                    <div style={{
+                    </div>}
+                    {comicData.events.available > 0 && <div style={{
                         display: 'grid',
                         gridTemplateColumns: '200px 200px 200px 200px 200px'
                     }}>
@@ -64,8 +64,8 @@ export default function UniComic(props) {
                             // eslint-disable-next-line react/jsx-key
                             comicData.events.items.map(ele => <Resource resourceURI={ele.resourceURI} />)
                         }
-                    </div>
-                    <div style={{
+                    </div>}
+                    {comicData.creators.available > 0 && <div style={{
                         display: 'grid',
                         gridTemplateColumns: '200px 200px 200px 200px 200px'
                     }}>
@@ -74,7 +74,7 @@ export default function UniComic(props) {
                             // eslint-disable-next-line react/jsx-key
                             comicData.creators.items.map(ele => <Resource resourceURI={ele.resourceURI} />)
                         }
-                    </div>
+                    </div>}
 
                 </div>
             }
