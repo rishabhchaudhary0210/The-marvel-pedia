@@ -20,9 +20,16 @@ function App() {
       <h1>Hello</h1>
       <h3>APP COMOPONEN</h3>
       <div>
+        <hr />
+        <Link to={`/`}> HOME </Link>
+        <hr />
+        <hr />
         <Link to={`/characters`}> CHARACTERS </Link>
+        <hr />
         <Link to={`/comics`}> COMICS </Link>
+        <hr />
         <Link to={`/series`}> SERIES </Link>
+        <hr />
       </div>
       <Outlet />
 

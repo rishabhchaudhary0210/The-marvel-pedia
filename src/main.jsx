@@ -17,17 +17,19 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <div>Error Recieved</div>,
+    children:[
+      {
+        path: "/:kind",
+        element: <Character />,
+        // errorElement: <div>Error Recieved</div>,
+      },
+      {
+        path: "/:kind/:id",
+        element: <UniCharacter />,
+        // errorElement: <div>Error Recieved</div>,
+      },
+    ]
 
-  },
-  {
-    path: "/:kind",
-    element: <Character />,
-    errorElement: <div>Error Recieved</div>,
-  },
-  {
-    path: "/:kind/:id",
-    element: <UniCharacter />,
-    errorElement: <div>Error Recieved</div>,
   },
 
 
@@ -42,5 +44,5 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
 )

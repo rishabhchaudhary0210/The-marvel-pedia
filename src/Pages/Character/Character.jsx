@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 // import.meta.env.query;
 
 export default function Character() {
@@ -19,7 +19,7 @@ export default function Character() {
             console.log(charData);
         }
         getData();
-    }, [offset]);
+    }, [offset, kind]);
 
     return (
         <>
@@ -33,8 +33,8 @@ export default function Character() {
                     }}
                 >
                     {charData.map(ele =>
-
                         <div key={ele?.id}>
+                        <Link to={`/${kind}/${ele.id}`}>
 
                             <h4>{ele?.id}</h4>
 
@@ -55,6 +55,7 @@ export default function Character() {
                                 :
                                 "DESCRIPTION"}</p>
 
+                        </Link>
                         </div>
                     )}
                 </div>}

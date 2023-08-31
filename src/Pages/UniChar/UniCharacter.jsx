@@ -1,28 +1,30 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import Resource from "../../Components/FetchCard/Resource";
+import { useParams } from "react-router-dom";
 
-export default function UniCharacter(props) {
+export default function UniCharacter() {
     const [charData, setCharData] = useState('');
     const [show, setShow] = useState(false);
+    const {kind, id} = useParams();
     useEffect(() => {
         const getData = async () => {
             console.log('Api Called');
-            const response = await fetch(`https://gateway.marvel.com:443/v1/public/${props.kind}/${props.id}${import.meta.env.VITE_QUERY}`);
+            const response = await fetch(`https://gateway.marvel.com:443/v1/public/${kind}/${id}${import.meta.env.VITE_QUERY}`);
             const resdata = await response.json();
             setCharData(resdata.data.results[0]);
             setShow(true);
             console.log(charData);
         }
         getData();
-    }, []);
+    }, [kind, id]);
 
     return (
         <>
         {!show && <h1>LOADING</h1> }
             {show &&
                 <div>
-                    <h1>{props.kind}</h1>
+                    <h1>{kind}</h1>
 
                     <h3>{charData.id}</h3>
                     
@@ -36,10 +38,11 @@ export default function UniCharacter(props) {
                         charData?.startYear+' - '+ charData?.endYear
                     }</h5>  
                     
-                    {(props.kind === 'comics')?
-                    <h3>{charData?.prices[0]?.type + "  $ " +charData?.prices[0]?.price}</h3>:''}
+                    {(kind === 'comics') ?
+                        <h3>{charData?.prices[0]?.type + "  $ " +charData?.prices[0]?.price}</h3>:''}
                     
-                    <p>{(typeof(charData.description) === 'string')?charData.description.substring(0, 70):"DESCRIPTION"}</p>
+                    <p>{(typeof(charData.description) === 'string')?
+                        charData.description.substring(0, 70):"DESCRIPTION"}</p>
 
                     {charData?.variants?.length>0 && 
                     <div style={{
@@ -48,8 +51,12 @@ export default function UniCharacter(props) {
                     }}>
                         <h2>VARIANTS</h2>
                         {
+                            charData?.variants.map(ele => 
                             // eslint-disable-next-line react/jsx-key
-                            charData?.variants.map(ele => <Resource resourceURI={ele.resourceURI} />)
+                            <Resource  
+                                resourceURI={ele.resourceURI} 
+                                kind="comics"
+                            />)
                         }
                     </div>}
 
@@ -59,8 +66,12 @@ export default function UniCharacter(props) {
                     }}>
                         <h2>CHARAC</h2>
                         {
-                            // eslint-disable-next-line react/jsx-key
-                            charData?.characters.items.map(ele => <Resource resourceURI={ele.resourceURI} />)
+                            charData?.characters.items.map(ele => 
+                                // eslint-disable-next-line react/jsx-key
+                            <Resource 
+                                resourceURI={ele.resourceURI}
+                                kind="characters"
+                            />)
                         }
                     </div>}
 
@@ -68,10 +79,14 @@ export default function UniCharacter(props) {
                         display: 'grid',
                         gridTemplateColumns: '200px 200px 200px 200px 200px'
                     }}>
-                        <h2>CREAORS</h2>
+                        <h2>CREATORS</h2>
                         {
-                            // eslint-disable-next-line react/jsx-key
-                            charData.creators.items.map(ele => <Resource resourceURI={ele.resourceURI} />)
+                            charData.creators.items.map(ele => 
+                                // eslint-disable-next-line react/jsx-key
+                            <Resource 
+                                resourceURI={ele.resourceURI}
+                                kind="creators"
+                            />)
                         }
                     </div>}
 
@@ -81,23 +96,31 @@ export default function UniCharacter(props) {
                     }}>
                         <h2>COMICS</h2>
                         {
-                            // eslint-disable-next-line react/jsx-key
-                            charData?.comics.items.map(ele => <Resource resourceURI={ele.resourceURI} />)
+                            charData?.comics.items.map(ele => 
+                                // eslint-disable-next-line react/jsx-key
+                            <Resource 
+                                resourceURI={ele.resourceURI}
+                                kind="comics"
+                            />)
                         }
                     </div>}
 
 
-                    {(charData?.series?.available > 0 || (props.kind === 'comics' && charData?.series != null))  && <div style={{
+                    {(charData?.series?.available > 0 || (kind === 'comics' && charData?.series != null))  && <div style={{
                         display: 'grid',
                         gridTemplateColumns: '200px 200px 200px 200px 200px'
                     }}>
                         <h2>SERIES</h2>
                         {
-                            (props.kind === 'comics') ?
-                            <Resource resourceURI={charData?.series?.resourceURI} />
+                            (kind === 'comics') ?
+                                <Resource kind="series" resourceURI={charData?.series?.resourceURI} />
                             :
-                            // eslint-disable-next-line react/jsx-key
-                            charData?.series.items.map(ele => <Resource resourceURI={ele.resourceURI} />)
+                            charData?.series.items.map(ele => 
+                                // eslint-disable-next-line react/jsx-key
+                                    <Resource 
+                                        resourceURI={ele.resourceURI}
+                                        kind="series"
+                                     />)
                         }
                     </div>}
                     
@@ -107,8 +130,12 @@ export default function UniCharacter(props) {
                     }}>
                         <h2>EVENTS</h2>
                         {
-                            // eslint-disable-next-line react/jsx-key
-                            charData?.events.items.map(ele => <Resource resourceURI={ele.resourceURI} />)
+                            charData?.events.items.map(ele => 
+                                // eslint-disable-next-line react/jsx-key
+                            <Resource 
+                                resourceURI={ele.resourceURI}
+                                kind="events"
+                            />)
                         }
                     </div>}
 
