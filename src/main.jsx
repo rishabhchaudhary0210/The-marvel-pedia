@@ -5,7 +5,7 @@ import './index.css'
 
 import Character from './Pages/Character/Character';
 import UniCharacter from './Pages/UniChar/UniCharacter';
-
+import Search from './Pages/Search/Search';
 
 import {
   createBrowserRouter,
@@ -27,7 +27,10 @@ const router = createBrowserRouter([
         path: "/:kind/:id",
         element: <UniCharacter />,
         // errorElement: <div>Error Recieved</div>,
-      },
+      },{
+        path: "/search",
+        element: <Search />
+      }
     ]
 
   },

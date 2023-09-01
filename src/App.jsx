@@ -17,8 +17,6 @@ function App() {
   return (
     <div>
 
-      <h1>Hello</h1>
-      <h3>APP COMOPONEN</h3>
       <div>
         <hr />
         <Link to={`/`}> HOME </Link>
@@ -30,7 +28,10 @@ function App() {
         <hr />
         <Link to={`/series`}> SERIES </Link>
         <hr />
+        <Link to={`/search`}>SEARCH</Link>
+        <hr />
       </div>
+
       <Outlet />
 
 
@@ -47,4 +48,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
