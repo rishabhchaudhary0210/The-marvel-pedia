@@ -13,11 +13,13 @@ import { Outlet, Link } from 'react-router-dom';
 
 
 function App() {
-
+  const classes = 'bg-[red] text-[green] ';
   return (
-    <div>
+    <div 
+      className='bg-slate-50'
+    >
 
-      <div>
+      <div className={classes}>
         <hr />
         <Link to={`/`}> HOME </Link>
         <hr />

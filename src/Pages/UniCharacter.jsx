@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import Resource from "../../Components/FetchCard/Resource";
+import Resource from "../Components/Resource";
 import { useParams } from "react-router-dom";
 
 export default function UniCharacter() {

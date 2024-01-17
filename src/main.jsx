@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-import Character from './Pages/Character/Character';
-import UniCharacter from './Pages/UniChar/UniCharacter';
-import Search from './Pages/Search/Search';
+import Character from './Pages/Character';
+import UniCharacter from './Pages/UniCharacter';
+import Search from './Pages/Search';
 
 import {
   createBrowserRouter,
