@@ -33,15 +33,15 @@ export default function Resource(props) {
                         <h4 className="text-lg text-slate-400">#{resData.id}</h4>
                         <h4 className="text-xl font-extrabold">{resData.name || resData.title || resData.fullName}</h4>
                         <img src={resData.img} alt="thumbnail" 
-                        className=" h-54 w-60 rounded-lg mt-2"/>
-                        <p>
+                        className="h-64 w-60 rounded-lg mt-2"/>
+                        {/* <p>
                             {
-                                (typeof (resData.description) === 'string') ?
+                                (typeof (resData.description) === 'string' && resData?.description.length > 0) ?
                                     resData.description.substring(0, 35)+"..."
                                     :
                                     null
                             }
-                        </p>
+                        </p> */}
                     </div>
                 </NavLink>
             }
