@@ -99,7 +99,7 @@ const CharacterCard = (props) => {
                     </h4>
                 </div>
 
-                {(props?.kind === 'series') ?
+                {/* {(props?.kind === 'series') ?
                     <h5>{props?.eleData?.startYear + ' - ' + props?.eleData?.endYear}</h5>
                     :
                     ''}
@@ -107,7 +107,7 @@ const CharacterCard = (props) => {
                 <p>{(typeof(props?.eleData?.description) === 'string' && props?.eleData?.description.length > 0) ?
                     (props?.eleData?.description?.substring(0, 30)+"...")
                     :
-                    null}</p>
+                    null}</p> */}
 
             </Link>
         </div>
