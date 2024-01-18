@@ -1,5 +1,6 @@
 
 import './App.css';
+import Navbar from './Components/Navbar';
 // import Fetch from './Components/FetchCard/fetch';
 // import SingleChar from './Components/FetchCard/singleChar';
 // import Comics from './Pages/Comics/Comics';
@@ -13,27 +14,11 @@ import { Outlet, Link } from 'react-router-dom';
 
 
 function App() {
-  const classes = 'bg-[red] text-[green] ';
   return (
     <div 
-      className='bg-slate-50'
+      className='bg-slate-50 min-h-screen flex'
     >
-
-      <div className={classes}>
-        <hr />
-        <Link to={`/`}> HOME </Link>
-        <hr />
-        <hr />
-        <Link to={`/characters`}> CHARACTERS </Link>
-        <hr />
-        <Link to={`/comics`}> COMICS </Link>
-        <hr />
-        <Link to={`/series`}> SERIES </Link>
-        <hr />
-        <Link to={`/search`}>SEARCH</Link>
-        <hr />
-      </div>
-
+      <Navbar/>
       <Outlet />
 
 

@@ -29,7 +29,7 @@ export default function Character() {
 
     return (
         <div
-            className="  bg-slate-50 min-h-screen"
+            className="  bg-slate-50 min-h-screen w-full"
         >
             <div className="w-full text-xl mt-6 flex justify-center items-start gap-3">
                 <button
