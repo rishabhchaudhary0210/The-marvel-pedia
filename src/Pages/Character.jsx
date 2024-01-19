@@ -16,6 +16,7 @@ export default function Character() {
     useEffect(() => {
         const getData = async () => {
             console.log('Api Called');
+            setShow(false);
             const response = await fetch(`https://gateway.marvel.com:443/v1/public/${kind}${import.meta.env.VITE_QUERY}&offset=${offset * 20}`);
             const resdata = await response.json();
             setCharData(resdata.data.results);
@@ -47,7 +48,7 @@ export default function Character() {
             </div>
             {!show && <h1>LOADING!!!</h1>}
             {show &&
-                <div className="grid grid-cols-3">
+                <div className="flex flex-wrap justify-around">
                     {charData.map(ele =>
                         <CharacterCard 
                             key={ele?.id}
@@ -63,7 +64,7 @@ export default function Character() {
 const CharacterCard = (props) => {
     const [fillHeart, setFillHeart] = useState(false);
     return (
-        <div className="bg-white m-4 rounded-xl flex justify-center items-start p-4 shadow-xl  hover:scale-105 transition-all my-8 relative" >
+        <div className="bg-white mx-4 rounded-xl flex w-80 justify-center items-start p-4 shadow-xl  hover:scale-105 transition-all my-8 relative" >
 
             <div className="bg-white shadow-md rounded-full h-10 w-10 text-xl flex justify-center items-center absolute top-56 right-3 cursor-pointer">
                 {

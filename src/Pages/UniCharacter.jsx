@@ -14,6 +14,7 @@ export default function UniCharacter() {
 
     useEffect(() => {
         const getData = async () => {
+            setShow(false);
             console.log('Api Called');
             const url=`https://gateway.marvel.com:443/v1/public/${kind}/${id}${import.meta.env.VITE_QUERY}`
             console.log(url);
