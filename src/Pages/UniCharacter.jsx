@@ -16,6 +16,8 @@ export default function UniCharacter() {
         const getData = async () => {
             console.log('Api Called');
             const url=`https://gateway.marvel.com:443/v1/public/${kind}/${id}${import.meta.env.VITE_QUERY}`
+            console.log(url);
+            console.log(kind, id);
             const response = await fetch(url);
             const resdata = await response.json();
             setCharData(resdata.data.results[0]);
@@ -27,7 +29,7 @@ export default function UniCharacter() {
     }, [kind, id]);
 
     return (
-        <div className="px-6">
+        <div className="px-6 w-4/5 box-border grow">
             {!show && <h1>LOADING</h1>}
             {show &&
                 <div className="">
@@ -98,12 +100,14 @@ const ResourceContainer = (props) => {
     const [hideSlider, setHideSlider] = useState(false);
 
     return (
-        <div className="bg-slate-100 h-full my-10 py-4 rounded-xl min-w-[95vw] ">
+        <div className="bg-slate-100 h-full my-10 py-4 rounded-xl ">
             <div className="mx-8 flex items-center justify-between">
                 <h1 className="mt-2 font-bold text-3xl tracking-wider">
                     {props.kind.toUpperCase()}
                     {typeof (props.data) == 'object' && <span className="text-xl mb-2 px-4 text-slate-400">
                         {"(" + props?.data?.length + ")"}</span>}
+                    {typeof (props.data) == 'string' && <span className="text-xl mb-2 px-4 text-slate-400">
+                        {"(1)"}</span>}
                 </h1>
                 <button className={`${hideSlider?"rotate-180":"rotate-0"}`} 
                     onClick={() => setHideSlider(!hideSlider)}><IconDownArrow /></button>

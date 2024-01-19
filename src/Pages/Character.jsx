@@ -29,25 +29,25 @@ export default function Character() {
 
     return (
         <div
-            className="  bg-slate-50 min-h-screen w-full"
+            className="  bg-slate-50 min-h-screen w-full grow"
         >
             <div className="w-full text-xl mt-6 flex justify-center items-start gap-3">
                 <button
-                    className="rounded-lg bg-slate-200 px-4 py-1 flex justify-center items-center"
+                    className="rounded-lg bg-slate-100 hover:bg-slate-200 px-4 py-1 flex justify-center items-center"
                     disabled={offset === 0}
                     onClick={() => { setOffset(offset - 1); setShow(false) }}>
                     -
                 </button>
                 <h4 className="text-2xl">{offset + 1}</h4>
                 <button
-                    className="rounded-lg bg-slate-200 px-4 py-1 flex justify-center items-center"
+                    className="rounded-lg bg-slate-100 hover:bg-slate-200 px-4 py-1 flex justify-center items-center"
                     onClick={() => { setOffset(offset + 1); setShow(false) }}>
                     +
                 </button>
             </div>
             {!show && <h1>LOADING!!!</h1>}
             {show &&
-                <div className="grid grid-cols-4">
+                <div className="grid grid-cols-3">
                     {charData.map(ele =>
                         <CharacterCard 
                             key={ele?.id}
