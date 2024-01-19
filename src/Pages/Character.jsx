@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import marvelLogo from "./../assets/marvel-logo.jpg";
+import Loader from "../Components/Loader";
 // import.meta.env.query;
 
 export default function Character() {
@@ -11,7 +12,7 @@ export default function Character() {
     const [offset, setOffset] = useState(0);
 
     // eslint-disable-next-line no-unused-vars
-    useEffect(()=>window.scrollTo({top:0, behavior:"smooth"}), []);
+    useEffect(() => window.scrollTo({ top: 0, behavior: "smooth" }), []);
 
     useEffect(() => {
         const getData = async () => {
@@ -32,31 +33,34 @@ export default function Character() {
         <div
             className="  bg-slate-50 min-h-screen w-4/5 grow"
         >
-            <div className="w-full text-xl mt-6 flex justify-center items-start gap-3">
-                <button
-                    className="rounded-lg bg-slate-100 hover:bg-slate-200 px-4 py-1 flex justify-center items-center"
-                    disabled={offset === 0}
-                    onClick={() => { setOffset(offset - 1); setShow(false) }}>
-                    -
-                </button>
-                <h4 className="text-2xl">{offset + 1}</h4>
-                <button
-                    className="rounded-lg bg-slate-100 hover:bg-slate-200 px-4 py-1 flex justify-center items-center"
-                    onClick={() => { setOffset(offset + 1); setShow(false) }}>
-                    +
-                </button>
-            </div>
-            {!show && <h1>LOADING!!!</h1>}
-            {show &&
+            {!show && <Loader />}
+            {show && <>
+                <h1 className="text-5xl font-mono font-extrabold mt-8 mx-12 pb-2 tracking-widest border-b border-solid border-slate-400">
+                    {kind.toUpperCase()}</h1>
+
+                <div className="w-full text-xl mt-6 flex justify-center items-start gap-3">
+                    <button
+                        className="rounded-lg bg-slate-100 hover:bg-slate-200 px-4 py-1 flex justify-center items-center"
+                        disabled={offset === 0}
+                        onClick={() => { setOffset(offset - 1); setShow(false) }}>
+                        -
+                    </button>
+                    <h4 className="text-2xl">{offset + 1}</h4>
+                    <button
+                        className="rounded-lg bg-slate-100 hover:bg-slate-200 px-4 py-1 flex justify-center items-center"
+                        onClick={() => { setOffset(offset + 1); setShow(false) }}>
+                        +
+                    </button>
+                </div>
                 <div className="flex flex-wrap justify-around">
                     {charData.map(ele =>
-                        <CharacterCard 
+                        <CharacterCard
                             key={ele?.id}
                             eleData={ele}
-                            kind={kind}  
+                            kind={kind}
                         />
                     )}
-                </div>}
+                </div></>}
         </div>
     );
 }

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Resource from "../Components/Resource";
 import { useParams } from "react-router-dom";
 import marvelLogo from "./../assets/marvel-logo.jpg";
+import Loader from "../Components/Loader";
 
 export default function UniCharacter() {
     const [charData, setCharData] = useState('');
@@ -31,10 +32,11 @@ export default function UniCharacter() {
 
     return (
         <div className="px-6 w-4/5 box-border grow">
-            {!show && <h1>LOADING</h1>}
+            {!show && <Loader />}
             {show &&
                 <div className="">
-                    <h1 className="text-5xl font-extrabold my-8 tracking-widest">{kind.toUpperCase()}</h1>
+                    <h1 className="text-5xl font-extrabold font-mono my-8 pb-2 tracking-widest border-b border-solid border-slate-400">
+                        {kind.toUpperCase()}</h1>
 
                     <div className="mx-4 flex justify-between items-center gap-8">
                         <div>
@@ -59,7 +61,8 @@ export default function UniCharacter() {
                     </div>
 
 
-                    <p>{(typeof (charData.description) === 'string') ?
+                    <p className="text-lg mx-2 my-8">
+                        {(typeof (charData.description) === 'string') ?
                         charData.description : null}</p>
 
                     {charData?.variants?.length > 0 &&

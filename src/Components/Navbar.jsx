@@ -13,8 +13,8 @@ const Navbar = () => {
     return (
         <div className={`box-border overflow-hidden transition-all duration-200 sticky left-0 top-0 flex flex-col min-h-screen border-2 items-start gap-8 text-lg text-slate-600 font-semibold tracking-wider py-6 ${expandNav ? " px-5 w-1/5" : "w-14 px-1"} `}>
 
-            {!expandNav && <IconBxMenuAltLeft className="mx-auto h-6 w-8 cursor-pointer" onClick={()=>{setExpandNav(!expandNav);console.log("Click")}}/>}
-            {expandNav && <IconCross className="text-right h-6 w-8 cursor-pointer" onClick={()=>{setExpandNav(!expandNav);console.log("Click")}}/>}
+            {!expandNav && <IconBxMenuAltLeft className="mx-auto h-6 w-8 cursor-pointer text-slate-400" onClick={()=>{setExpandNav(!expandNav);console.log("Click")}}/>}
+            {expandNav && <IconCross className="text-right h-6 w-8 cursor-pointer text-slate-400" onClick={()=>{setExpandNav(!expandNav);console.log("Click")}}/>}
             {/* <div> */}
             <NavLink to={`/`} activeclassname="bg-red-500 text-green-600" className={({ isActive, isPending }) => isPending ? LinkStyleClass : isActive ? LinkActiveClass : LinkStyleClass} >
                 <div className={LinkContClass}>
