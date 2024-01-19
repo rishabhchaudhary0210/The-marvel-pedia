@@ -5,10 +5,10 @@ import { Link, NavLink } from 'react-router-dom'
 const Navbar = () => {
     const [expandNav, setExpandNav] = useState(true);
 
-    const LinkActiveClass = "bg-slate-200 px-4 py-3 w-52 flex text-slate-400 items-start border-l-4 border-solid border-purple-500";
+    const LinkActiveClass = "bg-slate-200 px-4 py-3 w-full flex text-slate-400 items-start border-l-4 border-solid border-purple-500";
     const LinkStyleClass = "px-4 py-3 w-full flex items-start text-slate-400 hover:text-purple-500 hover:translate-x-3 transition-transform duration-300";
     // before:content-[""] before:bg-purple-500  before:block before:h-1 before:w-0 before:rounded-xl hover:before:w-full
-    const LinkContClass = 'flex gap-4  justify-center items-center transition-all duration-300';
+    const LinkContClass = 'flex gap-4 justify-center items-center transition-all duration-300';
 
     return (
         <div className={`box-border overflow-hidden transition-all duration-200 sticky left-0 top-0 flex flex-col min-h-screen border-2 items-start gap-8 text-lg text-slate-600 font-semibold tracking-wider py-6 ${expandNav ? " px-5 w-1/5" : "w-14 px-1"} `}>
