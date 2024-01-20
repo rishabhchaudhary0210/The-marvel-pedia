@@ -31,17 +31,17 @@ export default function UniCharacter() {
     }, [kind, id]);
 
     return (
-        <div className="px-6 w-4/5 box-border grow">
+        <div className="px-2 sm:px-6 w-4/5 box-border grow">
             {!show && <Loader />}
             {show &&
                 <div className="">
-                    <h1 className="text-5xl font-extrabold font-mono my-8 pb-2 tracking-widest border-b border-solid border-slate-400">
+                    <h1 className="text-3xl sm:text-5xl font-extrabold font-mono my-8 pb-2 tracking-widest border-b border-solid border-slate-400">
                         {kind.toUpperCase()}</h1>
 
-                    <div className="mx-4 flex justify-between items-center gap-8">
-                        <div>
-                            <h3 className="text-slate-400 text-3xl">#{charData.id}</h3>
-                            <h3 className="text-6xl tracking-wide font-bold my-2">{charData.name || charData.title || charData.fullName}</h3>
+                    <div className="mx-1 sm:mx-4 flex sm:flex-row flex-col smjustify-between items-center gap-8">
+                        <div className="px-5 sm:px-0 text-left w-full">
+                            <h3 className="text-slate-400 text-xl sm:text-3xl">#{charData.id}</h3>
+                            <h3 className="text-4xl sm:text-6xl tracking-wide font-bold my-2">{charData.name || charData.title || charData.fullName}</h3>
                             {charData?.issueNumber > 0 && <h5 className="my-4 mx-2 mt-6 text-2xl text-slate-400">Issue No. = {charData?.issueNumber}</h5>}
                             {charData?.startYear && <h5 className="my-4 mt-6 mx-2 text-2xl text-slate-400">{
                                 charData?.startYear + ' - ' + charData?.endYear
@@ -56,8 +56,8 @@ export default function UniCharacter() {
                         </div>
 
                         {charData.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ?
-                            <img src={marvelLogo} alt="img" className="h-96 w-96 rounded-lg shadow-2xl" /> :
-                            <img src={charData.thumbnail.path + "." + charData.thumbnail.extension} alt="img" className="h-96 w-96 rounded-lg shadow-2xl" />}
+                            <img src={marvelLogo} alt="img" className="h-64 w-64 sm:h-96 sm:w-96 rounded-lg shadow-2xl" /> :
+                            <img src={charData.thumbnail.path + "." + charData.thumbnail.extension} alt="img" className="h-64 w-64 sm:h-96 sm:w-96 rounded-lg shadow-2xl" />}
                     </div>
 
 
@@ -106,11 +106,11 @@ const ResourceContainer = (props) => {
     return (
         <div className="bg-slate-100 h-full my-10 py-4 rounded-xl ">
             <div className="mx-8 flex items-center justify-between">
-                <h1 className="mt-2 font-bold text-3xl tracking-wider">
+                <h1 className="mt-2 font-bold text-xl sm:text-3xl tracking-wider">
                     {props.kind.toUpperCase()}
-                    {typeof (props.data) == 'object' && <span className="text-xl mb-2 px-4 text-slate-400">
+                    {typeof (props.data) == 'object' && <span className="text-lg sm:text-xl mb-2 px-4 text-slate-400">
                         {"(" + props?.data?.length + ")"}</span>}
-                    {typeof (props.data) == 'string' && <span className="text-xl mb-2 px-4 text-slate-400">
+                    {typeof (props.data) == 'string' && <span className="text-lg sm:text-xl mb-2 px-4 text-slate-400">
                         {"(1)"}</span>}
                 </h1>
                 <button className={`${hideSlider?"rotate-180":"rotate-0"}`} 

@@ -36,32 +36,35 @@ export default function Search() {
 
 
     return (
-        <div className="bg-slate-50 min-h-screen w-4/5 grow relative ">
-            <h1 className="text-5xl font-mono font-extrabold mt-8 mx-12 pb-2 tracking-widest border-b border-solid border-slate-400"> Search </h1>
-            <div className="flex justify-center items=center gap-2 mt-10 mb-2">
-                <select name="" id="" onChange={(e) => { setChoice(e.target.value); setShow(false) }}
-                    className="h-20 w-1/5 rounded-l-2xl px-6 outline-none text-xl"
-                >
-                    <option value="characters">Characters</option>
-                    <option value="comics">Comics</option>
-                    <option value="series">Series</option>
-                    {/* <option value="events">Events</option> */}
-                    <option value="creators">Creators</option>
-                </select>
-                <input type="text" placeholder="Search Here" onChange={handleInputChange}
-                    className="h-20 w-3/5 rounded-r-2xl px-6 outline-none text-xl"
-                />
-            </div>
-            <div className="bg-white absolute right-28 w-3/5 max-h-96 overflow-y-scroll scrollbar-track-slate-200 scrollbar-thumb-slate-400 scrollbar-thin scrollbar-thumb-rounded-xl ">
-                {show &&
-                    searchRes?.map((m, index) => <SearchListItem key={index} data={m} kind={choice} />)
-                }
-                {
-                    show && searchRes.length === 0 &&
-                    <h3 className="text-4xl text-slate-400 flex justify-center items-center h-20">
-                        No Results Found
-                    </h3>
-                }
+        <div className="bg-slate-50 min-h-screen w-4/5 grow relative">
+            <h1 className="text-3xl sm:text-5xl font-mono font-extrabold mt-8 mx-12 pb-2 tracking-widest border-b border-solid border-slate-400"> Search </h1>
+            
+            <div className="flex flex-col items-center px-2  sm:px-0">
+                <div className="flex justify-center items-center sm:flex-row flex-col w-full items=center gap-2 mt-10 mb-2 relative">
+                    <select name="" id="" onChange={(e) => { setChoice(e.target.value); setShow(false) }}
+                        className="h-20 w-full sm:w-1/5 rounded-l-2xl px-6 outline-none text-xl"
+                    >
+                        <option value="characters">Characters</option>
+                        <option value="comics">Comics</option>
+                        <option value="series">Series</option>
+                        {/* <option value="events">Events</option> */}
+                        <option value="creators">Creators</option>
+                    </select>
+                    <input type="text" placeholder="Search Here" onChange={handleInputChange}
+                        className="h-20 w-full sm:w-3/5 rounded-r-2xl px-6 outline-none text-xl"
+                    />
+                </div>
+                <div className="bg-white w-full sm:w-4/5 max-h-96 overflow-y-scroll scrollbar-track-slate-200 scrollbar-thumb-slate-400 scrollbar-thin scrollbar-thumb-rounded-xl ">
+                    {show &&
+                        searchRes?.map((m, index) => <SearchListItem key={index} data={m} kind={choice} />)
+                    }
+                    {
+                        show && searchRes.length === 0 &&
+                        <h3 className="text-4xl text-slate-400 flex justify-center items-center h-20">
+                            No Results Found
+                        </h3>
+                    }
+                </div>
             </div>
             {/* </div>} */}
         </div>
@@ -77,20 +80,20 @@ const SearchListItem = (props) => {
                     <img
                         src={marvelLogo}
                         alt="img"
-                        className="w-16 h-16  rounded-full"
+                        className="w-10 h-10 sm:w-16 sm:h-16  rounded-full"
                     /> :
                     <img
                         src={(props?.data?.thumbnail?.path + "." + props?.data?.thumbnail?.extension)}
                         alt="img"
-                        className="w-16 h-16  rounded-full"
+                        className="w-10 h-10 sm:w-16 sm:h-16  rounded-full"
                     />
 
                 }
-                <div className="text-right">
-                    <h1 className="text-lg ">
+                <div className="text-right sm:w-2/3">
+                    <h1 className="text-base sm:text-lg ">
                         {props?.data?.name || props?.data?.title || props?.data?.fullName}
                     </h1>
-                    <h3 className="text-md text-slate-500">
+                    <h3 className="text-sm sm:text-base text-slate-500">
                         {'#' + props?.data?.id}
                     </h3>
                 </div>
