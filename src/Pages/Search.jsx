@@ -42,7 +42,7 @@ export default function Search() {
             <div className="flex flex-col items-center px-2  sm:px-0">
                 <div className="flex justify-center items-center sm:flex-row flex-col w-full items=center gap-2 mt-10 mb-2 relative">
                     <select name="" id="" onChange={(e) => { setChoice(e.target.value); setShow(false) }}
-                        className="h-20 w-full sm:w-1/5 rounded-l-2xl px-6 outline-none text-xl"
+                        className="h-20 w-full sm:w-1/5 rounded-l-2xl px-6 outline-none text-xl shadow-lg border-2 border-solid "
                     >
                         <option value="characters">Characters</option>
                         <option value="comics">Comics</option>
@@ -51,7 +51,7 @@ export default function Search() {
                         <option value="creators">Creators</option>
                     </select>
                     <input type="text" placeholder="Search Here" onChange={handleInputChange}
-                        className="h-20 w-full sm:w-3/5 rounded-r-2xl px-6 outline-none text-xl"
+                        className="h-20 w-full sm:w-3/5 rounded-r-2xl px-6 outline-none text-xl shadow-lg border-2 border-solid"
                     />
                 </div>
                 <div className="bg-white w-full sm:w-4/5 max-h-96 overflow-y-scroll scrollbar-track-slate-200 scrollbar-thumb-slate-400 scrollbar-thin scrollbar-thumb-rounded-xl ">

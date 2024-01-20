@@ -61,7 +61,7 @@ export default function UniCharacter() {
                     </div>
 
 
-                    <p className="text-lg mx-2 my-8">
+                    <p className="text-lg mx-2 my-8 text-slate-600 ">
                         {(typeof (charData.description) === 'string') ?
                         charData.description : null}</p>
 

@@ -22,7 +22,7 @@ export default function Character() {
             const resdata = await response.json();
             setCharData(resdata.data.results);
             setShow(true);
-            // console.log(resdata);
+            console.log(resdata);
             console.log(charData);
         }
         getData();
