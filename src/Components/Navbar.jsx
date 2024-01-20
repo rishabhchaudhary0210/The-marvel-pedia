@@ -1,9 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom'
 
 
 const Navbar = () => {
     const [expandNav, setExpandNav] = useState(true);
+    const navRef = useRef(null);
+
+    useEffect(()=>{
+        const HandleClickOutside = (e)=>{
+            if(navRef.current && !navRef.current.contains(e.target)){
+                setExpandNav(false);
+            }
+        }
+        document.addEventListener('mousedown', HandleClickOutside);
+        return () => { document.removeEventListener('mousedown', HandleClickOutside); };
+    },[]);
+
 
     const LinkActiveClass = "bg-slate-200 px-4 py-3 w-full flex text-slate-400 items-start border-l-4 border-solid border-purple-500";
     const LinkStyleClass = "px-4 py-3 w-full flex items-start text-slate-400 hover:text-purple-500 hover:translate-x-3 transition-transform duration-300";
@@ -11,10 +23,11 @@ const Navbar = () => {
     const LinkContClass = 'flex gap-4 justify-center items-center transition-all duration-300';
 
     return (
-        <div className={`box-border overflow-hidden transition-all duration-200 sm:sticky left-0 top-0 flex flex-col min-h-screen border-2 items-start gap-8 text-lg text-slate-600 font-semibold z-10 tracking-wider py-6 ${expandNav ? " px-5 xl:w-1/5 md:w-1/3 sm:w-3/5 w-4/5 fixed bg-slate-50" : "sticky w-14 px-1"} `}>
+        <div ref={navRef} 
+        className={`box-border overflow-hidden transition-all duration-200 sm:sticky left-0 top-0 flex flex-col min-h-screen border-2 items-start gap-8 text-lg text-slate-600 font-semibold z-10 tracking-wider py-6 ${expandNav ? " px-5 xl:w-1/5 md:w-1/3 sm:w-3/5 w-4/5 fixed bg-slate-50" : "sticky w-14 px-1"} `}>
 
-            {!expandNav && <IconBxMenuAltLeft className="mx-auto h-6 w-8 cursor-pointer text-slate-400" onClick={()=>setExpandNav(!expandNav)}/>}
-            {expandNav && <IconCross className="text-right h-6 w-8 cursor-pointer text-slate-400" onClick={()=>setExpandNav(!expandNav)}/>}
+            {!expandNav && <IconBxMenuAltLeft className="mx-auto h-6 w-8 cursor-pointer text-slate-400 hover:text-purple-500" onClick={()=>setExpandNav(!expandNav)}/>}
+            {expandNav && <IconCross className="text-right h-6 w-8 cursor-pointer text-slate-400 hover:text-purple-500" onClick={()=>setExpandNav(!expandNav)}/>}
             {/* <div> */}
             <NavLink to={`/`} activeclassname="bg-red-500 text-green-600" className={({ isActive, isPending }) => isPending ? LinkStyleClass : isActive ? LinkActiveClass : LinkStyleClass} >
                 <div className={LinkContClass} onClick={()=>setExpandNav(false)}>
