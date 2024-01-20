@@ -52,23 +52,16 @@ export default function Search() {
                     className="h-20 w-3/5 rounded-r-2xl px-6 outline-none text-xl"
                 />
             </div>
-            {/* <div>
-                searchVal = {inputVal}
-                <hr />
-                choice = {choice}
-            </div> */}
-            {/* {!show && <Loader />} */}
-            {/* {show && <div> */}
-                <div className="bg-white absolute right-28 w-3/5 max-h-96 overflow-y-scroll scrollbar-track-slate-200 scrollbar-thumb-slate-400 scrollbar-thin scrollbar-thumb-rounded-xl ">
-            {show &&
-                searchRes?.map((m, index) => <SearchListItem key={index} data={m} kind={choice} />)
-            }
-            {
-                show && searchRes.length === 0 && 
+            <div className="bg-white absolute right-28 w-3/5 max-h-96 overflow-y-scroll scrollbar-track-slate-200 scrollbar-thumb-slate-400 scrollbar-thin scrollbar-thumb-rounded-xl ">
+                {show &&
+                    searchRes?.map((m, index) => <SearchListItem key={index} data={m} kind={choice} />)
+                }
+                {
+                    show && searchRes.length === 0 &&
                     <h3 className="text-4xl text-slate-400 flex justify-center items-center h-20">
                         No Results Found
                     </h3>
-            }
+                }
             </div>
             {/* </div>} */}
         </div>

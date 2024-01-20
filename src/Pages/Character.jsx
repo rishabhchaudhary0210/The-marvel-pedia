@@ -31,11 +31,11 @@ export default function Character() {
 
     return (
         <div
-            className="  bg-slate-50 min-h-screen w-4/5 grow"
+            className="  bg-slate-50 min-h-screen w-4/5 relative grow z-0"
         >
             {!show && <Loader />}
             {show && <>
-                <h1 className="text-5xl font-mono font-extrabold mt-8 mx-12 pb-2 tracking-widest border-b border-solid border-slate-400">
+                <h1 className="text-3xl sm:text-5xl font-mono font-extrabold mt-8 mx-12 pb-2 tracking-widest border-b border-solid border-slate-400">
                     {kind.toUpperCase()}</h1>
 
                 <div className="w-full text-xl mt-6 flex justify-center items-start gap-3">
@@ -68,7 +68,7 @@ export default function Character() {
 const CharacterCard = (props) => {
     const [fillHeart, setFillHeart] = useState(false);
     return (
-        <div className="bg-white mx-4 rounded-xl flex w-80 justify-center items-start p-4 shadow-xl  hover:scale-105 transition-all my-8 relative" >
+        <div className="bg-white mx-1 sm:mx-4 rounded-xl flex w-80 justify-center items-start p-4 shadow-xl  hover:scale-105 transition-all my-8 relative" >
 
             <div className="bg-white shadow-md rounded-full h-10 w-10 text-xl flex justify-center items-center absolute top-56 right-3 cursor-pointer">
                 {
