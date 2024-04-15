@@ -17,8 +17,8 @@ const Navbar = () => {
     },[]);
 
 
-    const LinkActiveClass = "bg-slate-200 px-4 py-3 w-full flex text-slate-400 items-start border-l-4 border-solid border-purple-500";
-    const LinkStyleClass = "px-4 py-3 w-full flex items-start text-slate-400 hover:text-purple-500 hover:translate-x-3 transition-transform duration-300";
+    const LinkActiveClass = "bg-slate-200 px-4 py-3 w-full flex text-slate-400 items-start border-l-4 border-solid border-red-600";
+    const LinkStyleClass = "px-4 py-3 w-full flex items-start text-slate-400 hover:text-red-600 hover:translate-x-3 transition-transform duration-300";
     // before:content-[""] before:bg-purple-500  before:block before:h-1 before:w-0 before:rounded-xl hover:before:w-full
     const LinkContClass = 'flex gap-4 justify-center items-center transition-all duration-300';
 

@@ -11,6 +11,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Home from './Pages/Home.jsx';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <div>Error Recieved</div>,
     children:[
+      {
+        path: "/",
+        element: <Home/>
+      },
       {
         path: "/:kind",
         element: <Character />,
